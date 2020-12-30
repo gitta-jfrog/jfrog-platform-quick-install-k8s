@@ -139,18 +139,18 @@ Copy ~/.kube/config and edit (changes in bold)
 apiVersion: v1
 clusters:
 - cluster:
-    certificate-authority-data: ***
-    server: https://89E82F9E808C64CD221CCE3211ACDF34.gr7.us-west-2.eks.amazonaws.com
-  name: yardeng-cluster2.us-west-2.eksctl.io
+    certificate-authority-data: 
+    server: 
+  name: 
 contexts:
 - context:
-    cluster: yardeng-cluster2.us-west-2.eksctl.io
-    user: nodepool-sa
-  name: yardeng@yardeng-cluster2.us-west-2.eksctl.io
-current-context: yardeng@yardeng-cluster2.us-west-2.eksctl.io
+    cluster: 
+    user: nodepool-sa  ##### change exist user to  nodepool-sa
+  name:
+current-context: 
 kind: Config
 preferences: {}
-users:
+users:  ### Delete exist section under users and add  name and Token
 - name: nodepool-sa
   user:
     token: TOKEN
