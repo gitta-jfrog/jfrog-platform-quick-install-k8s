@@ -70,7 +70,6 @@ helm upgrade --install xray --create-namespace --namespace xray center/jfrog/xra
 ```
 
 ## Install Pipelines
-(Just UI, Without ability to run Pipelines)
 ```bash
 helm upgrade --install pipelines --namespace pipelines center/jfrog/pipelines \
 --set pipelines.jfrogUrl="http://artifactory-ha-nginx.artifactory-ha.svc.cluster.local" \
