@@ -1,0 +1,1 @@
+# jfrog-platform-quick-install-k8s
