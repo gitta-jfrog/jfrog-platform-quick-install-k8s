@@ -1,14 +1,14 @@
 # jfrog-platform-quick-install-k8s
 
 
-##Install Artifactory-HA
-###Artifactory Licenses
+## Install Artifactory-HA
+### Artifactory Licenses
 Prepare a text file with the license(s) written in it. If writing multiple licenses (must be in the same file), it's important to put **two new lines between each license block**!
 ```bash
 # Create the Kubernetes secret (assuming the local license file is 'art.lic')
 kubectl create secret generic artifactory-cluster-license --from-file=./art.lic
 ```
-###Install Artifactory-HA
+### Install Artifactory-HA
 ```bash
 helm upgrade --install artifactory-ha --create-namespace --namespace artifactory-ha center/jfrog/artifactory-ha \
 --set artifactory.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
@@ -24,7 +24,7 @@ helm upgrade --install artifactory-ha --create-namespace --namespace artifactory
 --set artifactory.license.secret=artifactory-cluster-license,artifactory.license.dataKey=art.lic
 ```
 
-##Install Mission-Control
+## Install Mission-Control
 ```bash
 helm upgrade --install mission-control --create-namespace --namespace mission-control center/jfrog/mission-control \
 --set missionControl.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
@@ -39,7 +39,7 @@ helm upgrade --install mission-control --create-namespace --namespace mission-co
 --set unifiedUpgradeAllowed=true
 ```
 
-##Install Distribution
+## Install Distribution
 ```bash
 helm upgrade --install distribution --create-namespace --namespace distribution center/jfrog/distribution \
 --set distribution.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
@@ -54,7 +54,7 @@ helm upgrade --install distribution --create-namespace --namespace distribution 
 --set unifiedUpgradeAllowed=true 
 ```
 
-##Install Xray
+## Install Xray
 ```bash
 helm upgrade --install xray --create-namespace --namespace xray center/jfrog/xray \
 --set xray.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
@@ -69,13 +69,12 @@ helm upgrade --install xray --create-namespace --namespace xray center/jfrog/xra
 --set unifiedUpgradeAllowed=true
 ```
 
-##Export JFrog Platform URL
+## Export JFrog Platform URL
 ```bash
 export SERVICE_IP=$(kubectl get svc --namespace artifactory-ha artifactory-ha-nginx -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 echo http://$SERVICE_IP/
 ```
 OR
-
 ```bash
 export SERVICE_IP=$(kubectl get svc --namespace artifactory-ha artifactory-ha-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 echo http://$SERVICE_IP/
