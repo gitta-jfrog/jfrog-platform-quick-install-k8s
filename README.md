@@ -69,6 +69,39 @@ helm upgrade --install xray --create-namespace --namespace xray center/jfrog/xra
 --set unifiedUpgradeAllowed=true
 ```
 
+## Install Pipelines
+(Just UI, Without ability to run Pipelines)
+```bash
+helm upgrade --install pipelines --namespace pipelines center/jfrog/pipelines \
+--set pipelines.jfrogUrl="http://artifactory-ha-nginx.artifactory-ha.svc.cluster.local" \
+--set pipelines.jfrogUrlUI="http://artifactory-ha-nginx.artifactory-ha.svc.cluster.local" \
+--set pipelines.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
+--set pipelines.masterKey="c601841ee4a874161d9fc596a6a1974c99970771c6139eae20898eed1c61ace3" \
+--set pipelines.msg.uiUserPassword="somepassword" \
+--set rabbitmq.auth.password="password" \
+--set existingSecret="" \
+--set postgresql.postgresqlPassword="1WcseEOS4s" \
+--set postgresql.image.tag="12.3.0-debian-10-r71" \
+--set postgresql.persistence.size=20Gi \
+--set databaseUpgradeReady=true \
+--set unifiedUpgradeAllowed=true \
+--set pipelines.api.ingress.enabled="true" \
+--set pipelines.api.path="/" \
+--set pipelines.api.ingress.hosts=pipelines-api.pipelines.svc.cluster.local" \
+--set pipelines.www.ingress.enabled="true" \
+--set pipelines.www.path="/" \
+--set pipelines.www.ingress.hosts=pipelines.pipelines.svc.cluster.local" \
+
+--set rabbitmq.ingress.enabled="true" \
+--set rabbitmq.ingress.hostname="pipelines-msg.pipelines.svc.cluster.local" \
+--set rabbitmq.ingress.path="
+```
+
+
+
+
+
+
 ## Export JFrog Platform URL
 ```bash
 export SERVICE_IP=$(kubectl get svc --namespace artifactory-ha artifactory-ha-nginx -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
