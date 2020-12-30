@@ -102,21 +102,21 @@ Copy ~/.kube/config and edit (changes in bold)
 apiVersion: v1
 clusters:
 - cluster:
-    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJd01URXpNREUyTURZeE5Wb1hEVE13TVRFeU9ERTJNRFl4TlZvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTkZ6CnBVTklCNFlzTURjZjdPR3lIRmM1UHRyZDgwcTFLeGIyVTd0TWtDMFRVRjdjVEUvbzgxdldaRXU3cHl1cE1KUkwKM2RMWDVnNnVGZFBGRnUxRWlvSmFLTTVMa0JsdjlwRnlvT050QWxCVGJ4SlhPYnN4NVIrWXEwZ29UdkFjVzV3Qgp1aXQrTHNMUmJmRlJYSjVKRFJURC9UNkFOU3NqWUlOcHBXS1FISjRkUWpjNFlZZzVBZjBGSVhra0h0MHJUcm0vCnlPWFU5SWNYUk5XeFpLM2JIVUVwd1RnVms1c2hWK3Y4UDlVR1Y4RzFwMUgxSzBFOVhZdFZSeGI5ZWRnaWR3ZzkKMjNvTEZqaENkd21YTm1qU0RMSTdDR3BrcllMcC9PN1loYTR5bHdMemRZaTh1akR1cjE2K25nc0ozWit5SllnagpCMHVWOXRIN2dPZGowVUJ6ellVQ0F3RUFBYU1qTUNFd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFHNmdFYldpS1BKN2lXY1FOYkt4aDIwNmlKNWIKWlpEUGlEZ2lxY3dBemJ3STJXbVQ3dk9hRmVRcXgyanBOdFdDZTVSUHZ5djl3Z3lQNFU5eUNvbm5Td0NUWE5tbwpMcG1Ua3d3YjNVaFZBbkFraVVoWk82bGpwbnFjZnhuQ3R3TzFORE91R0t0QmFDRi9TT2dOVXN4N2didGVRT01HCkM5UGZ1OStmeEtzSVJsUWNtWEsvSUxoV3N4alB4Tk1oVkpLZmVUSkN0cmpWVy9adTNrdWdSMmNMemkrci91WVcKUnlLUkFMVVA4M3JOeU5qVnlyZHBFdURyTjFCTno3TE1zdG1vbFVhVjZ3SnlZcVMraklKNzQyZWIvY01ueW84YQpmQlJnaUw4OWZ1VVQxQms0elBGNjFyQUw5clBDMVh1YjRvQjlFQWhkSXZMcXoyY2lQSG42SXpIRXJNdz0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+    certificate-authority-data: ***
     server: https://89E82F9E808C64CD221CCE3211ACDF34.gr7.us-west-2.eks.amazonaws.com
   name: yardeng-cluster2.us-west-2.eksctl.io
 contexts:
 - context:
     cluster: yardeng-cluster2.us-west-2.eksctl.io
-    **user: nodepool-sa**
+    user: nodepool-sa
   name: yardeng@yardeng-cluster2.us-west-2.eksctl.io
 current-context: yardeng@yardeng-cluster2.us-west-2.eksctl.io
 kind: Config
 preferences: {}
 users:
-**- name: nodepool-sa
+- name: nodepool-sa
   user:
-    token:** **TOKEN**
+    token: TOKEN
   
 ```
 
