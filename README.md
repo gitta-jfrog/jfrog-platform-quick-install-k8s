@@ -90,6 +90,43 @@ helm upgrade --install pipelines --namespace pipelines center/jfrog/pipelines \
 ```
 
 ### Create kubeconfig and add it in AdminPanel->Pipelines->Kubernetes Intergration 
+Create the following
+
+```yaml
+kubectl apply -f clusterrole.yaml
+```
+
+```yaml
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: nodepool-role
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nodepool-sa
+  namespace: kube-system
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: nodepool-cluster-role
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: nodepool-role
+subjects:
+- kind: ServiceAccount
+  name: nodepool-sa
+  namespace: kube-system
+```
+
 Extract Token
 
 ```yaml
