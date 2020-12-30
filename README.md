@@ -85,20 +85,10 @@ helm upgrade --install pipelines --namespace pipelines center/jfrog/pipelines \
 --set postgresql.persistence.size=20Gi \
 --set databaseUpgradeReady=true \
 --set unifiedUpgradeAllowed=true \
---set pipelines.api.ingress.enabled="true" \
---set pipelines.api.path="/" \
---set pipelines.api.ingress.hosts=pipelines-api.pipelines.svc.cluster.local" \
---set pipelines.www.ingress.enabled="true" \
---set pipelines.www.path="/" \
---set pipelines.www.ingress.hosts=pipelines.pipelines.svc.cluster.local" \
-
---set rabbitmq.ingress.enabled="true" \
---set rabbitmq.ingress.hostname="pipelines-msg.pipelines.svc.cluster.local" \
---set rabbitmq.ingress.path="
+--set pipelines.api.externalUrl="pipelines-pipelines-api.pipelines.svc.cluster.local" \
+--set pipelines.www.externalUrl="pipelines-pipelines-www.pipelines.svc.cluster.local" \
+--set rabbitmq.externalUrl="pipelines-rabbitmq.pipelines.svc.cluster.local"
 ```
-
-
-
 
 
 
