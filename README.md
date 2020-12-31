@@ -6,11 +6,12 @@
 Prepare a text file with the license(s) written in it. If writing multiple licenses (must be in the same file), it's important to put **two new lines between each license block**!
 ```bash
 # Create the Kubernetes secret (assuming the local license file is 'art.lic')
-kubectl create secret generic artifactory-cluster-license --from-file=./art.lic
+kubectl create namespace artifactory-ha
+kubectl -n artifactory-ha create secret generic artifactory-cluster-license --from-file=./art.lic
 ```
 ### Install Artifactory-HA
 ```bash
-helm upgrade --install artifactory-ha --create-namespace --namespace artifactory-ha center/jfrog/artifactory-ha \
+helm upgrade --install artifactory-ha --namespace artifactory-ha center/jfrog/artifactory-ha \
 --set artifactory.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
 --set artifactory.masterKey="c601841ee4a874161d9fc596a6a1974c99970771c6139eae20898eed1c61ace3" \
 --set artifactory.node.replicaCount=1 \
