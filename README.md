@@ -70,6 +70,18 @@ helm upgrade --install xray --create-namespace --namespace xray center/jfrog/xra
 --set unifiedUpgradeAllowed=true
 ```
 
+## Install Artifactory Edge node
+```yaml
+helm upgrade --install artifactory-edge --create-namespace --namespace artifactory-edge center/jfrog/artifactory \
+--set artifactory.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
+--set artifactory.masterKey="c601841ee4a874161d9fc596a6a1974c99970771c6139eae20898eed1c61ace3" \
+--set artifactory.persistence.size=20Gi \
+--set postgresql.postgresqlPassword="1WcseEOS4s" \
+--set databaseUpgradeReady=true \
+--set unifiedUpgradeAllowed=true \
+--set postgresql.image.tag="12.3.0-debian-10-r71"
+```
+
 ## Install Pipelines
 ```bash
 helm upgrade --install pipelines --namespace pipelines center/jfrog/pipelines \
