@@ -99,51 +99,17 @@ helm upgrade --install pipelines --create-nameapsce --namespace pipelines center
 --set unifiedUpgradeAllowed=true \
 --set pipelines.api.externalUrl="http://pipelines-pipelines-api.pipelines.svc.cluster.local:30000" \
 --set pipelines.www.externalUrl="http://pipelines-pipelines-www.pipelines.svc.cluster.local:30001" \
---set rabbitmq.externalUrl="amqp://pipelines-rabbitmq.pipelines.svc.cluster.local"
+--set rabbitmq.externalUrl="amqp://pipelines-rabbitmq.pipelines.svc.cluster.local" \
+--set pipelines.rbac.clusterRole="true"
 ```
 
-### Create kubeconfig and add it in AdminPanel->Pipelines->Kubernetes Intergration 
-Create the following
+### Create kubeconfig file and add it in AdminPanel->Pipelines->Kubernetes Intergration 
 
-```yaml
-kubectl apply -f clusterrole.yaml
-```
-
-```yaml
----
-kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1beta1
-metadata:
-  name: nodepool-role
-rules:
-- apiGroups: ["*"]
-  resources: ["*"]
-  verbs: ["*"]
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: nodepool-sa
-  namespace: kube-system
----
-kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
-metadata:
-  name: nodepool-cluster-role
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: nodepool-role
-subjects:
-- kind: ServiceAccount
-  name: nodepool-sa
-  namespace: kube-system
-```
 
 Extract Token
 
-```yaml
-kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep nodepool-sa- | awk '{print $1}')| grep token
+```bash
+kubectl -n pipelines describe secret $(kubectl -n pipelines get secret | grep pipelines-token- | awk '{print $1}')| grep token
 ```
 
 Copy ~/.kube/config and edit (changes in bold)
@@ -158,13 +124,13 @@ clusters:
 contexts:
 - context:
     cluster: 
-    user: nodepool-sa  ##### change exist user to  nodepool-sa
+    user: pipelines  ### change exist user to  pipelines
   name:
 current-context: 
 kind: Config
 preferences: {}
 users:  ### Delete exist section under users and add  name and Token
-- name: nodepool-sa
+- name: pipelines
   user:
     token: TOKEN
   
@@ -172,11 +138,11 @@ users:  ### Delete exist section under users and add  name and Token
 
 ## Export JFrog Platform URL
 ```bash
-export SERVICE_IP=$(kubectl get svc --namespace artifactory-ha artifactory-ha-nginx -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+export SERVICE_IP=$(kubectl get svc --namespace artifactory-ha artifactory-ha-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 echo http://$SERVICE_IP/
 ```
 OR
 ```bash
-export SERVICE_IP=$(kubectl get svc --namespace artifactory-ha artifactory-ha-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+export SERVICE_IP=$(kubectl get svc --namespace artifactory-ha artifactory-ha-nginx -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 echo http://$SERVICE_IP/
 ```
