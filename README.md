@@ -112,7 +112,7 @@ Extract Token
 kubectl -n pipelines describe secret $(kubectl -n pipelines get secret | grep pipelines-token- | awk '{print $1}')| grep token
 ```
 
-Copy ~/.kube/config and edit (changes in bold)
+Copy ~/.kube/config and edit the file:
 
 ```yaml
 apiVersion: v1
