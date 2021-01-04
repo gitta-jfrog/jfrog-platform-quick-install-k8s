@@ -1,4 +1,4 @@
-# jfrog-platform-quick-install-k8s
+# jfrog-platform-quick-install-k8s (unofficial)
 
 
 ## Install Artifactory-HA
