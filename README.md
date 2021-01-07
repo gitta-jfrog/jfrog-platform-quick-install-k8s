@@ -84,7 +84,7 @@ helm upgrade --install artifactory-edge --create-namespace --namespace artifacto
 
 ## Install Pipelines
 ```bash
-helm upgrade --install pipelines --create-nameapsce --namespace pipelines center/jfrog/pipelines \
+helm upgrade --install pipelines --create-namespace --namespace pipelines center/jfrog/pipelines \
 --set pipelines.jfrogUrl="http://artifactory-ha-nginx.artifactory-ha.svc.cluster.local" \
 --set pipelines.jfrogUrlUI="http://artifactory-ha-nginx.artifactory-ha.svc.cluster.local" \
 --set pipelines.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
