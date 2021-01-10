@@ -1,6 +1,22 @@
 # jfrog-platform-quick-install-k8s (unofficial)
 
+## Create GKE Cluster
+```bash
+PROJECT=<project>
+CLUSTER_NAME=<cluster-name>
+ZONE=<zone>
 
+gcloud --project ${PROJECT} container clusters create ${CLUSTER_NAME}  \
+    --enable-ip-alias \
+    --no-enable-autoupgrade \
+    --network default \
+    --subnetwork default \
+	--num-nodes 2 \
+	--zone ${ZONE} \
+	--machine-type e2-standard-4 \
+    --disk-size 50 \
+    --cluster-version 1.17.14-gke.400
+```
 ## Install Artifactory-HA
 ### Artifactory Licenses
 Prepare a text file with the license(s) written in it. If writing multiple licenses (must be in the same file), it's important to put **two new lines between each license block**!
