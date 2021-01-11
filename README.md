@@ -88,7 +88,7 @@ helm upgrade --install xray --create-namespace --namespace xray center/jfrog/xra
 --set rabbitmq.rabbitmqPassword="1WcseEOS4s" \
 --set postgresql.postgresqlPassword="1WcseEOS4s" \
 --set postgresql.image.tag="12.3.0-debian-10-r71" \
---set postgresql.persistence.size=20Gi \
+--set postgresql.persistence.size=50Gi \
 --set databaseUpgradeReady=true \
 --set unifiedUpgradeAllowed=true
 ```
