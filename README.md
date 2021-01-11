@@ -5,15 +5,7 @@
 * Google Cloud SDK - https://cloud.google.com/sdk/docs/install
 * Kubectl https://kubernetes.io/docs/tasks/tools/install-kubectl/
 * Recommand - K9s - https://k9scli.io/topics/install/
-
-* Artifactory HA licenses
-
-## Chart Details
-This chart will do the following:
-
-* Deploy Artifactory highly available cluster. 1 primary node and 2 member nodes.
-* Deploy a PostgreSQL database  **NOTE:** For production grade installations it is recommended to use an external PostgreSQL
-* Deploy an Nginx server
+* Artifactory HA licenses 
 
 ## Create GKE Cluster
 ```bash
