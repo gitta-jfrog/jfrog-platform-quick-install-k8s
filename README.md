@@ -24,6 +24,18 @@ gcloud --project ${PROJECT} container clusters create ${CLUSTER_NAME}  \
     --disk-size 50 \
     --cluster-version 1.17.14-gke.400
 ```
+
+## Installing the Chart
+
+### Add ChartCenter Helm repository
+
+Before installing JFrog helm charts, you need to add the [ChartCenter helm repository](https://chartcenter.io) to your helm client
+
+```bash
+helm repo add center https://repo.chartcenter.io
+helm repo update
+```
+
 ## Install Artifactory
 ### Artifactory Licenses
 Prepare a text file with the license(s) written in it. If writing multiple licenses (must be in the same file), it's important to put **two new lines between each license block**!
