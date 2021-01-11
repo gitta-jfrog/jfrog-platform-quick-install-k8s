@@ -9,8 +9,8 @@
 
 ## Create GKE Cluster
 ```bash
-PROJECT=<project>
-CLUSTER_NAME=<cluster-name>
+PROJECT=<project> 
+CLUSTER_NAME=<cluster-name> ##limited to 16 charts
 ZONE=<zone>
 
 gcloud --project ${PROJECT} container clusters create ${CLUSTER_NAME}  \
@@ -18,9 +18,9 @@ gcloud --project ${PROJECT} container clusters create ${CLUSTER_NAME}  \
     --no-enable-autoupgrade \
     --network default \
     --subnetwork default \
-	--num-nodes 2 \
-	--zone ${ZONE} \
-	--machine-type e2-standard-4 \
+    --num-nodes 2 \
+    --zone ${ZONE} \
+    --machine-type e2-standard-4 \
     --disk-size 50 \
     --cluster-version 1.17.14-gke.400
 ```
