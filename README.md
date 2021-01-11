@@ -24,7 +24,7 @@ gcloud --project ${PROJECT} container clusters create ${CLUSTER_NAME}  \
     --disk-size 50 \
     --cluster-version 1.17.14-gke.400
 ```
-## Install Artifactory-HA
+## Install Artifactory
 ### Artifactory Licenses
 Prepare a text file with the license(s) written in it. If writing multiple licenses (must be in the same file), it's important to put **two new lines between each license block**!
 ```bash
