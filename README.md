@@ -25,6 +25,11 @@ gcloud --project ${PROJECT} container clusters create ${CLUSTER_NAME}  \
     --cluster-version 1.17.14-gke.400
 ```
 
+## Resize the cluster size
+```
+gcloud container clusters resize ${CLUSTER_NAME} --zone ${ZONE} --project ${PROJECT} --num-nodes=0
+```
+
 ## Installing the Chart
 
 ### Add ChartCenter Helm repository
