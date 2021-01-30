@@ -103,6 +103,7 @@ helm upgrade --install xray --create-namespace --namespace xray center/jfrog/xra
 --set xray.jfrogUrl="http://artifactory-ha-nginx.artifactory-ha.svc.cluster.local" \
 --set common.persistence.size=25Gi \
 --set rabbitmq.enabled=true \
+--set rabbitmq-ha.enabled=false \
 --set rabbitmq.auth.password="1WcseEOS4s" \
 --set rabbitmq.replicaCount=1 \
 --set replicaCount=1 \
