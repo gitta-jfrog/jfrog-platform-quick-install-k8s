@@ -95,14 +95,17 @@ helm upgrade --install distribution --create-namespace --namespace distribution 
 --set unifiedUpgradeAllowed=true 
 ```
 
-## Install Xray
+## Install Xray (Increase "replicaCount" and "rabbitmq.replicaCount" for HA)
 ```bash
 helm upgrade --install xray --create-namespace --namespace xray center/jfrog/xray \
 --set xray.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
 --set xray.masterKey="c601841ee4a874161d9fc596a6a1974c99970771c6139eae20898eed1c61ace3" \
 --set xray.jfrogUrl="http://artifactory-ha-nginx.artifactory-ha.svc.cluster.local" \
 --set common.persistence.size=25Gi \
---set rabbitmq.rabbitmqPassword="1WcseEOS4s" \
+--set rabbitmq.enabled=true \
+--set rabbitmq.auth.password="1WcseEOS4s" \
+--set rabbitmq.replicaCount=1 \
+--set replicaCount=1 \
 --set postgresql.postgresqlPassword="1WcseEOS4s" \
 --set postgresql.image.tag="12.3.0-debian-10-r71" \
 --set postgresql.persistence.size=100Gi \
