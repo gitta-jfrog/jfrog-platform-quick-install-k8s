@@ -16,8 +16,8 @@ ZONE=<zone>
 gcloud --project ${PROJECT} container clusters create ${CLUSTER_NAME}  \
     --enable-ip-alias \
     --no-enable-autoupgrade \
-    --network default \
-    --subnetwork default \
+    --network newdefault \ 
+    --subnetwork newdefault \
     --num-nodes 2 \
     --zone ${ZONE} \
     --machine-type e2-standard-4 \
