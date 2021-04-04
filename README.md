@@ -22,7 +22,7 @@ gcloud --project ${PROJECT} container clusters create ${CLUSTER_NAME}  \
     --zone ${ZONE} \
     --machine-type e2-standard-4 \
     --disk-size 50 \
-    --cluster-version 1.18.12-gke.1206
+    --cluster-version 1.18.16-gke.302
 ```
 
 ## Resize the cluster size
@@ -37,7 +37,7 @@ gcloud container clusters resize ${CLUSTER_NAME} --zone ${ZONE} --project ${PROJ
 Before installing JFrog helm charts, you need to add the [ChartCenter helm repository](https://chartcenter.io) to your helm client
 
 ```bash
-helm repo add center https://repo.chartcenter.io
+helm repo add jfrog https://charts.jfrog.io
 helm repo update
 ```
 
@@ -51,7 +51,7 @@ kubectl -n artifactory-ha create secret generic artifactory-cluster-license --fr
 ```
 ### Install Artifactory-HA
 ```bash
-helm upgrade --install artifactory-ha --namespace artifactory-ha center/jfrog/artifactory-ha \
+helm upgrade --install artifactory-ha --namespace artifactory-ha jfrog/artifactory-ha \
 --set artifactory.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
 --set artifactory.masterKey="c601841ee4a874161d9fc596a6a1974c99970771c6139eae20898eed1c61ace3" \
 --set artifactory.node.replicaCount=0 \
@@ -68,7 +68,7 @@ helm upgrade --install artifactory-ha --namespace artifactory-ha center/jfrog/ar
 
 ## Install Mission-Control
 ```bash
-helm upgrade --install mission-control --create-namespace --namespace mission-control center/jfrog/mission-control \
+helm upgrade --install mission-control --create-namespace --namespace mission-control jfrog/mission-control \
 --set missionControl.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
 --set missionControl.masterKey="c601841ee4a874161d9fc596a6a1974c99970771c6139eae20898eed1c61ace3" \
 --set missionControl.jfrogUrl="http://artifactory-ha-nginx.artifactory-ha.svc.cluster.local" \
@@ -83,7 +83,7 @@ helm upgrade --install mission-control --create-namespace --namespace mission-co
 
 ## Install Distribution
 ```bash
-helm upgrade --install distribution --create-namespace --namespace distribution center/jfrog/distribution \
+helm upgrade --install distribution --create-namespace --namespace distribution jfrog/distribution \
 --set distribution.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
 --set distribution.masterKey="c601841ee4a874161d9fc596a6a1974c99970771c6139eae20898eed1c61ace3" \
 --set distribution.jfrogUrl="http://artifactory-ha-nginx.artifactory-ha.svc.cluster.local" \
@@ -98,7 +98,7 @@ helm upgrade --install distribution --create-namespace --namespace distribution 
 
 ## Install Xray (Increase "replicaCount" and "rabbitmq.replicaCount" for HA)
 ```bash
-helm upgrade --install xray --create-namespace --namespace xray center/jfrog/xray \
+helm upgrade --install xray --create-namespace --namespace xray jfrog/xray \
 --set xray.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
 --set xray.masterKey="c601841ee4a874161d9fc596a6a1974c99970771c6139eae20898eed1c61ace3" \
 --set xray.jfrogUrl="http://artifactory-ha-nginx.artifactory-ha.svc.cluster.local" \
@@ -117,7 +117,7 @@ helm upgrade --install xray --create-namespace --namespace xray center/jfrog/xra
 
 ## Install Artifactory Edge node
 ```yaml
-helm upgrade --install artifactory-edge --create-namespace --namespace artifactory-edge center/jfrog/artifactory \
+helm upgrade --install artifactory-edge --create-namespace --namespace artifactory-edge jfrog/artifactory \
 --set artifactory.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
 --set artifactory.masterKey="c601841ee4a874161d9fc596a6a1974c99970771c6139eae20898eed1c61ace3" \
 --set artifactory.persistence.size=20Gi \
@@ -129,7 +129,7 @@ helm upgrade --install artifactory-edge --create-namespace --namespace artifacto
 
 ## Install Pipelines
 ```bash
-helm upgrade --install pipelines --create-namespace --namespace pipelines center/jfrog/pipelines \
+helm upgrade --install pipelines --create-namespace --namespace pipelines jfrog/pipelines \
 --set pipelines.jfrogUrl="http://artifactory-ha-nginx.artifactory-ha.svc.cluster.local" \
 --set pipelines.jfrogUrlUI="http://artifactory-ha-nginx.artifactory-ha.svc.cluster.local" \
 --set pipelines.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
