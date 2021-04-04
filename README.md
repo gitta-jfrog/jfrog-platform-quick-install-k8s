@@ -54,7 +54,8 @@ kubectl -n artifactory-ha create secret generic artifactory-cluster-license --fr
 helm upgrade --install artifactory-ha --namespace artifactory-ha center/jfrog/artifactory-ha \
 --set artifactory.joinKey="edf2019bc0d330a3f058b4662b16eb7a" \
 --set artifactory.masterKey="c601841ee4a874161d9fc596a6a1974c99970771c6139eae20898eed1c61ace3" \
---set artifactory.node.replicaCount=1 \
+--set artifactory.node.replicaCount=0 \
+--set artifactory.primary.replicaCount=2 \
 --set artifactory.persistence.size=20Gi \
 --set postgresql.postgresqlUsername="artifactory" \
 --set postgresql.postgresqlPassword="1WcseEOS4s" \
