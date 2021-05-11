@@ -22,7 +22,7 @@ gcloud --project ${PROJECT} container clusters create ${CLUSTER_NAME}  \
     --zone ${ZONE} \
     --machine-type e2-standard-4 \
     --disk-size 50 \
-    --cluster-version 1.18.16-gke.302
+    --cluster-version 1.18.17-gke.100
 ```
 
 ## Resize the cluster size
