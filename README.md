@@ -12,17 +12,18 @@
 PROJECT=<project> 
 CLUSTER_NAME=<cluster-name> ##limited to 16 charts
 ZONE=<zone>
+CLUSTER_VERSION=<cluster_version>
 
 gcloud --project ${PROJECT} container clusters create ${CLUSTER_NAME}  \
     --enable-ip-alias \
     --no-enable-autoupgrade \
-    --network newdefault \ 
+    --network newdefault \
     --subnetwork newdefault \
     --num-nodes 2 \
     --zone ${ZONE} \
     --machine-type e2-standard-4 \
     --disk-size 50 \
-    --cluster-version 1.18.17-gke.100
+    --cluster-version ${CLUSTER_VERSION}
 ```
 
 ## Resize the cluster size
