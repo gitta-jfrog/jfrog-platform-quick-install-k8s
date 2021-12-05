@@ -20,6 +20,7 @@ gcloud --project ${PROJECT} container clusters create ${CLUSTER_NAME}  \
     --network newdefault \
     --subnetwork newdefault \
     --num-nodes 2 \
+    --node-locations \
     --zone ${ZONE} \
     --machine-type e2-standard-4 \
     --disk-size 50 \
