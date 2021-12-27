@@ -5,6 +5,7 @@
 * Google Cloud SDK - https://cloud.google.com/sdk/docs/install
 * Kubectl https://kubernetes.io/docs/tasks/tools/install-kubectl/
 * Recommend - K9s - https://k9scli.io/topics/install/
+* Helm3 client
 * Artifactory HA licenses 
 
 ## Create GKE Cluster
